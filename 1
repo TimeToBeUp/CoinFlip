@@ -1,0 +1,271 @@
+# Welcome to my first Computer Science project with CodeCademy. 
+# In this file, I have created a coin flip game. 
+# It's a bit messy, for example, the formatting of the output is not consistent. 
+#    There are some 5 second breaks, for example, and some 0.5 second breaks if I remember correctly. 
+#    Additionally, the "----------" characters which you could call 'borders' are not consistent.
+# On top of that, the code is not well documented so if you have any questions, feel free to ask.
+
+# One thing I think I did well in this program is planning for contingencies,
+#    for example, if the user entered an input that was not supposed to be entered,
+#    it would print some kind of error message and they had the option to try again.
+
+# Another thing I think I did well was allow for the user to 
+# reset the game, so that their stats would erase and start at zero again. 
+# For example, see line 56 and 66, and line 145 and 171. 
+
+
+# I would be interested in learning how this program could be improved, so feedback is welcomed.
+# Questions are also welcomed however I may not respond to all (fair warning). 
+# Hope you found this helpful or interesting! 
+
+
+# let's import two things we need for this program
+
+import random
+import time
+
+# defines the coin flip function
+def coin_flip_game():
+    while True: 
+        correct_count = 0
+        guess_count = 0 
+        print('''
+----------
+Welcome to the coin flip game.
+You will guess the outcome of a random coin flip (heads/tails),
+clearly see the result of the coin flip, and
+clearly see whether or not you guessed correctly. 
+
+Are you ready to begin?
+
+Type 1 for yes, 
+or 2 to return to the main menu.
+----------''')
+
+        is_the_answer_yes = input()
+
+        if is_the_answer_yes == '1':
+            while True:
+                time.sleep(1)
+                guess = input('''
+----------
+Guess time! 
+----------
+Please press 1 for heads or 2 for tails.
+
+Press 3 to start over and return to the coin flip menu.
+''')
+                if guess == "1":
+                    guess_count += 1
+                    time.sleep(0.5)
+                    print('You have guessed heads.')
+                elif guess == "2":
+                    guess_count += 1
+                    time.sleep(0.5)
+                    print('You have guessed tails.')
+                elif guess == '3':
+                    break
+                else:
+                    time.sleep(0.5)
+                    print('Error: Please enter either 1 or 2 to guess.')
+                    continue
+                    
+                print('Now, let\'s see the result!\n----------')
+                time.sleep(2)
+                flip = random.randint(1, 2)
+                if flip == 1:
+                    print('The result was heads.')
+                    if flip == int(guess):
+                        print('You guessed correctly!')
+                        correct_count += 1 
+                        time.sleep(1)
+                    else:
+                        print('You did not guess correctly.')
+                if flip == 2:
+                    print('The result was tails.')
+                    if flip == int(guess):
+                        print('You have guessed correctly!')
+                        correct_count += 1
+                    elif guess == 1:
+                        print('You have not guessed correctly.')
+                        
+                time.sleep(2)    
+                print('''
+----------
+Stats:
+Guesses = ''' + str(guess_count) + '''
+Correct Guesses = ''' + str(correct_count) + '''
+----------''')
+                time.sleep(2)
+                    
+                is_the_answer_yes = 0
+        elif is_the_answer_yes == '2':
+            break
+        else:
+            while True: 
+                print('Error: Invalid character. Please type "1" to continue.')
+                ready_yet = input()
+                if ready_yet != '1':
+                    continue
+                else:
+                    print('You finally pressed 1! Game loading; wait 5 seconds.')
+                    time.sleep(5)
+                    break
+
+# defines the six sided dice function
+def six_sided_dice_game():
+    while True: 
+        correct_count = 0
+        guess_count = 0 
+        print('''
+----------
+Welcome to the six sided dice game.
+You will guess the outcome of a 
+roll of a six sided die,
+clearly see the result, and
+clearly see whether or not you guessed correctly. 
+
+Are you ready to begin?
+
+Type 1 for yes, 
+or 2 to return to the main menu.
+----------''')
+
+        is_the_answer_yes = input()
+
+        if is_the_answer_yes == '1':
+            while True:
+                time.sleep(1)
+                guess = input('''
+----------
+Guess time! 
+----------
+Please press a number between 1 and 6.
+
+Press 0 to start over and return to the menu.
+''')
+                if guess == "1":
+                    guess_count += 1
+                    time.sleep(0.5)
+                    print('You have guessed 1.')
+                elif guess == "2":
+                    guess_count += 1
+                    time.sleep(0.5)
+                    print('You have guessed 2.')
+                elif guess == "3":
+                    guess_count += 1
+                    time.sleep(0.5)
+                    print('You have guessed 3.')
+                elif guess == "4":
+                    guess_count += 1
+                    time.sleep(0.5)
+                    print('You have guessed 4.')
+                elif guess == "5":
+                    guess_count += 1
+                    time.sleep(0.5)
+                    print('You have guessed 5.')
+                elif guess == "6":
+                    guess_count += 1
+                    time.sleep(0.5)
+                    print('You have guessed 6.')
+                elif guess == '0':
+                    break
+                else:
+                    time.sleep(0.5)
+                    print('Error: Please enter a number between 1 and 6 to guess.')
+                    continue
+                    
+                print('Now, let\'s see the result!\n----------')
+                time.sleep(2)
+                flip = random.randint(1, 6)
+                if flip == 1:
+                    print('The result was 1.')
+                    if flip == int(guess):
+                        print('You guessed correctly!')
+                        correct_count += 1 
+                        time.sleep(1)
+                    else:
+                        print('You did not guess correctly.')
+                if flip == 2:
+                    print('The result was 2.')
+                    if flip == int(guess):
+                        print('You guessed correctly!')
+                        correct_count += 1
+                    else:
+                        print('You did not guess correctly.')
+                if flip == 3:
+                    print('The result was 3.')
+                    if flip == int(guess):
+                        print('You guessed correctly!')
+                        correct_count += 1
+                    else:
+                        print('You did not guess correctly.')
+                if flip == 4:
+                    print('The result was 4.')
+                    if flip == int(guess):
+                        print('You guessed correctly!')
+                        correct_count += 1
+                    else:
+                        print('You did not guess correctly.')
+                if flip == 5:
+                    print('The result was 5.')
+                    if flip == int(guess):
+                        print('You guessed correctly!')
+                        correct_count += 1
+                    else:
+                        print('You did not guess correctly.')
+                if flip == 6:
+                    print('The result was 6.')
+                    if flip == int(guess):
+                        print('You guessed correctly!')
+                        correct_count += 1
+                    else:
+                        print('You did not guess correctly.')
+                        
+                time.sleep(2)    
+                print('''
+----------
+Stats:
+Guesses = ''' + str(guess_count) + '''
+Correct Guesses = ''' + str(correct_count) + '''
+----------''')
+                time.sleep(2)
+                    
+                is_the_answer_yes = 0
+        elif is_the_answer_yes == '2':
+            break
+        else:
+            while True: 
+                print('Error: Invalid character. Please type "1" to continue.')
+                ready_yet = input()
+                if ready_yet != '1':
+                    continue
+                else:
+                    print('You finally pressed 1! Game loading; wait 5 seconds.')
+                    time.sleep(5)
+                    break
+
+
+
+# Main Menu of the Game 
+while True:
+    game_selection = input('''
+----------
+Welcome.
+This program allows you to choose between two games.
+The first game is a coin flip game.
+The second is a 6-sided dice game. 
+Which game would you like to play?
+Press 1 for the coin game,
+and press 2 for the 6-sided dice game.
+----------
+''')
+    if game_selection == '1':
+        coin_flip_game()
+    elif game_selection == '2':
+        six_sided_dice_game()
+    else:
+        print('You have entered an invalid character.')
+        print('Please wait 5 seconds.')
+        time.sleep(5)
+        continue
